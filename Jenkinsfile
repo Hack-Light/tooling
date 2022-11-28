@@ -27,7 +27,7 @@ pipeline {
         extensions: [],
         submoduleCfg: [], 
         // branches: [[name: '$branch']],
-        userRemoteConfigs: [[url: "https://github.com/darey-io/tooling.git ",credentialsId:'GITHUB_CREDENTIALS']] 	
+        userRemoteConfigs: [[url: "https://github.com/Hack-Light/tooling.git ",credentialsId:'GITHUB_CREDENTIALS']] 	
         ])
         
       }
@@ -73,7 +73,7 @@ pipeline {
         steps {
             echo 'Build Dockerfile....'
             script {
-                sh("eval \$(aws ecr get-login --no-include-email --region eu-central-1 | sed 's|https://||')") 
+                sh("eval \$(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')") 
                 // sh "docker build --network=host -t $IMAGE -f deploy/docker/Dockerfile ."
                 sh "docker build --network=host -t $IMAGE ."
                 docker.withRegistry("https://$ECRURL"){
@@ -90,7 +90,7 @@ pipeline {
         steps {
             echo 'Build Dockerfile....'
             script {
-                sh("eval \$(aws ecr get-login --no-include-email --region eu-central-1 | sed 's|https://||')") 
+                sh("eval \$(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')") 
                 // sh "docker build --network=host -t $IMAGE -f deploy/docker/Dockerfile ."
                 sh "docker build --network=host -t $IMAGE ."
                 docker.withRegistry("https://$ECRURL"){
@@ -106,7 +106,7 @@ pipeline {
         steps {
             echo 'Build Dockerfile....'
             script {
-                sh("eval \$(aws ecr get-login --no-include-email --region eu-central-1 | sed 's|https://||')") 
+                sh("eval \$(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')") 
                 // sh "docker build --network=host -t $IMAGE -f deploy/docker/Dockerfile ."
                 sh "docker build --network=host -t $IMAGE ."
                 docker.withRegistry("https://$ECRURL"){
